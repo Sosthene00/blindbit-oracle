@@ -10,6 +10,7 @@ func RunServer(api *ApiHandler) {
 	// todo merge gin logging into common logging
 	router := gin.Default()
 
+	router.GET("/chain", api.GetChain)
 	router.GET("/block-height", api.GetBestBlockHeight)
 	router.GET("/tweaks/:blockheight", FetchHeaderInvMiddleware, api.GetTweakDataByHeight)
 	router.GET("/tweak-index/:blockheight", FetchHeaderInvMiddleware, api.GetTweakIndexDataByHeight)

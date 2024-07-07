@@ -23,6 +23,12 @@ type TxRequest struct {
 	Data string `form:"data" json:"data" binding:"required"`
 }
 
+func (h *ApiHandler) GetChain(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"chain": common.Chain,
+	})
+}
+
 func (h *ApiHandler) GetBestBlockHeight(c *gin.Context) {
 	// todo returns one height too low
 	lastHeader, err := dblevel.FetchHighestBlockHeaderInvByFlag(true)
